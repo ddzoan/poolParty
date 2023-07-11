@@ -44,7 +44,7 @@ const checkForQueryIdChange = async (site, query, interval) => {
     } else {
       console.log('comparing oldstring to querySelector string');
       if(oldString === querySelector.toString()) {
-        console.log(`string is same, website probably did not change, checking again in 15 min`);
+        console.log(`string is same, website probably did not change, checking again in ${interval/ONE_MINUTE} min`);
         setTimeout(checkForQueryIdChange.bind(null, site, query, interval), interval);
       } else {
         console.log('website changed, you should check it, script ending');
@@ -59,6 +59,6 @@ const checkForQueryIdChange = async (site, query, interval) => {
 
 const site = 'http://aquasportsswimacademy.com/pricing/';
 const query = '#main';
-const interval = 15 * ONE_MINUTE;
+const interval = 1 * ONE_MINUTE;
 
 checkForQueryIdChange(site, query, interval);
